@@ -87,7 +87,7 @@ class="md:hidden fixed top-4 left-4 z-[9999] bg-white text-black px-3 py-2 round
 
     </div>
 
-    <!-- SCROLL AREA -->
+    <!-- SCROLL AREA (INI YANG DIPERBAIKI) -->
     <div class="w-full md:ml-64 h-screen overflow-y-scroll scroll-smooth snap-y snap-mandatory">
 
         <!-- WELCOME -->
@@ -204,28 +204,57 @@ class="md:hidden fixed top-4 left-4 z-[9999] bg-white text-black px-3 py-2 round
             <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center w-full">
 
                 <div class="flex justify-center">
-                    <img src="{{ asset('images/profile.jpeg') }}"
-                         class="w-72 h-72 object-cover rounded-full border-4 border-cyan-400">
+                    <div class="relative">
+                        <div class="absolute inset-0 rounded-full blur-2xl bg-cyan-400 opacity-30"></div>
+                        <img src="{{ asset('images/profile.jpeg') }}"
+                             class="w-72 h-72 object-cover rounded-full border-4 border-cyan-400 relative">
+                    </div>
                 </div>
 
                 <div>
-                    <h1 class="text-4xl font-bold mb-6 text-cyan-400">Tentang Saya</h1>
+                    <h1 class="text-4xl font-bold mb-6 text-cyan-400">
+                        Tentang Saya
+                    </h1>
 
                     <h2 class="text-xl font-semibold mb-4">
                         Saya <span class="text-cyan-400">Vivi Ramadhani</span>, Mahasiswa
                     </h2>
 
-                    <p class="text-gray-300 mb-6">
+                    <p class="text-gray-300 leading-relaxed mb-6">
                         Saya adalah seorang mahasiswa yang memiliki minat dalam dunia teknologi,
-                        khususnya dalam pembuatan website.
+                        khususnya dalam pembuatan website. Saya senang belajar hal baru dan terus
+                        mengembangkan skill saya dalam bidang IT.
+                    </p>
+
+                    <p class="text-gray-300 leading-relaxed mb-8">
+                        Selain itu, saya juga suka beraktivitas di luar seperti traveling dan
+                        mengabadikan momen dalam bentuk foto.
                     </p>
 
                     <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-purple-600 p-4 rounded-lg">Jambi</div>
-                        <div class="bg-green-500 p-4 rounded-lg">vivi@gmail.com</div>
-                        <div class="bg-pink-500 p-4 rounded-lg">+6285832015997</div>
-                        <div class="bg-orange-500 p-4 rounded-lg">Mahasiswi</div>
+
+                        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Jambi, Indonesia</span>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-green-500 to-emerald-600 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fas fa-envelope"></i>
+                            <span>vivi@gmail.com</span>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-pink-500 to-red-500 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fas fa-phone"></i>
+                            <span>+6285832015997</span>
+                        </div>
+
+                        <div class="bg-gradient-to-r from-orange-500 to-yellow-500 p-4 rounded-lg flex items-center gap-3">
+                            <i class="fas fa-user"></i>
+                            <span>Mahasiswi S1</span>
+                        </div>
+
                     </div>
+
                 </div>
 
             </div>
@@ -236,11 +265,51 @@ class="md:hidden fixed top-4 left-4 z-[9999] bg-white text-black px-3 py-2 round
 
 </div>
 
+<!-- MODAL -->
+<div id="modal1" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+    <div class="bg-white text-black p-6 rounded-lg w-[90%] md:w-[500px] relative">
+        <button onclick="closeModal('modal1')" class="absolute top-2 right-3 text-xl">✖</button>
+        <h2 class="text-xl font-bold mb-3">Lebaran Pertama</h2>
+        <p>
+            Hari raya pertama, saya yang pastinya bersilahturrahmi kerumah sanak saudara, bermaaf-maafan dengan keluarga dan saudara-saudara, makan bersama, bercanda, bercerita dan masih banyak lagi cerita menarik 
+        </p>
+    </div>
+</div>
+
+<div id="modal2" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+    <div class="bg-white text-black p-6 rounded-lg w-[90%] md:w-[500px] relative">
+        <button onclick="closeModal('modal2')" class="absolute top-2 right-3 text-xl">✖</button>
+        <h2 class="text-xl font-bold mb-3">Lebaran Kedua</h2>
+        <p>
+            Hari kedua lebaran saya dan keluarga, pagi-pagi sudah siap-siap untuk ke makam keluarga...
+        </p>
+    </div>
+</div>
+
+<div id="modal3" class="fixed inset-0 bg-black/70 hidden items-center justify-center z-50">
+    <div class="bg-white text-black p-6 rounded-lg w-[90%] md:w-[500px] relative">
+        <button onclick="closeModal('modal3')" class="absolute top-2 right-3 text-xl">✖</button>
+        <h2 class="text-xl font-bold mb-3">Lebaran Ketiga</h2>
+        <p>
+            Hari ketiga saya dan keluarga pergi bersilahturrahmi ke tempat keluarga...
+        </p>
+    </div>
+</div>
+
 <!-- SCRIPT -->
 <script>
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('-translate-x-full');
+}
+
+function openModal(id){
+    document.getElementById(id).classList.remove('hidden');
+    document.getElementById(id).classList.add('flex');
+}
+
+function closeModal(id){
+    document.getElementById(id).classList.add('hidden');
 }
 
 document.addEventListener('click', function(e) {
